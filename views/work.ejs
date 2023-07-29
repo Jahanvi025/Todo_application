@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+<div class="container"></div>
+<div class="box" id="heading"><h1 class="title">Work List</h1>
+</div>
+<div class="box">
+  <ul class="list-group mb-0">
+    <% for (let i= works.length - 1; i>= 0; i--) { %>
+        <li class="item1 ">
+            <input class="form-check-input me-2" id="myCheckbox<%= i %>"
+                type="checkbox" value="" aria-label="..." />
+            <label class="text gowtham-para">
+                <%= works[i] %>
+            </label>
+        </li>
+    
+        <% } %>
+</ul>
+<main>
+    
+    <form class="item" action="/todaywork" method="post">
+      <input class="input" type="text" name="newItem" placeholder="New Item" required>
+      <button class="btnn" type="submit" name="add">+</button>
+    </form>
+
+  </main>
+</div>
+</div>
+<%- include("partials/footer.ejs") %>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+
+$("[id^='myCheckbox']").on('change',function() 
+    {
+        const checkbox = $(this);
+                const label = checkbox.siblings(".gowtham-para");
+
+                if (checkbox.prop("checked")) {
+                    label.addClass("completed-task");
+                } else {
+                    label.removeClass("completed-task");
+                }
+    });
+   
+ 
+</script>
